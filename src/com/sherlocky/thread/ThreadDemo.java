@@ -1,7 +1,7 @@
 package com.sherlocky.thread;
 
 /** 
-
+* 求实thread和runnable的区别
 * @author Sherlocky
 * @date 2016年4月28日
 */
