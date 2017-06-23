@@ -26,6 +26,10 @@ public class StringInternTest {
 		System.out.println("I'am main2");
 	}
 
+	private static void main3(String[] args) throws UnsupportedEncodingException {
+		System.out.println("I'am main3");
+	}
+	
 	/**
 	 * jdk 1.6下 以下全部为 false
 	 */
@@ -34,14 +38,22 @@ public class StringInternTest {
 		String s1 = new StringBuffer("go").append("od").toString();
 		System.out.print("good ");
 		System.out.println(s1.intern() == s1);
-		// false -- java 加载方法时已放到字符串常量池
+		// false -- java 加载时已放到字符串常量池
 		String s2 = new StringBuffer("ja").append("va").toString();
 		System.out.print("java ");
 		System.out.println(s2.intern() == s2);
-		// false -- main 加载方法时已放到字符串常量池
+		// false -- main 加载时已放到字符串常量池
 		String s3 = new StringBuffer("ma").append("in").toString();
 		System.out.print("main ");
 		System.out.println(s3.intern() == s3);
+		// false -- main2 加载时已放到字符串常量池
+		String s31 = new StringBuffer("ma").append("in2").toString();
+		System.out.print("main2 ");
+		System.out.println(s31.intern() == s31);
+		// true -- main3 私有静态方法名不会放到字符串常量池
+		String s32 = new StringBuffer("ma").append("in3").toString();
+		System.out.print("main3 ");
+		System.out.println(s32.intern() == s32);
 		
 		// false
 		String s4 = new StringBuffer("STATIC").append("_PUBLIC").toString();
