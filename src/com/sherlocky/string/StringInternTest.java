@@ -1,89 +1,71 @@
-/**
- * 
- */
 package com.sherlocky.string;
 
-import java.io.UnsupportedEncodingException;
+/**
+ * 大前提【使用intern()比不使用intern()消耗的内存更少】
+ */
 
 /**
- * String.intern() 方法
+ * 在JVM运行时数据区中的方法区有一个【常量池】，但是在JDK1.7+开始常量池被放置在了【堆空间】，
+ * 因此常量池位置的不同影响到了String的intern()方法的表现。
+ */
+/**
+ * String.intern() 方法深入理解<p>
+ * 
+    1.在jdk1.6-的时候 intern() 时会在常量池中创建一个字符串对象（如果不存在的话），然后返回它的引用<p>
+    2.在jdk1.7+的时候【由于常量池整个存在于堆中】 intern() 时，如果常量池中不存在对应字符串<p>
+                      此时堆中是存在对应字符串对象的，因此常量池不需要再存储一份对象了，可以直接存储堆中的引用<p>
+           ==>> <i>str.intern() == str</i><p>
+ * 参考博文:【<a href="http://blog.csdn.net/seu_calvin/article/details/52291082">Java技术——你真的了解String类的intern()方法吗</a>】
  * @author zhangcx
- * @date 2017-06-23
+ * @date 2017-09-04
  */
 public class StringInternTest {
-	private static String STATIC_PRIVATE = "STATIC_PRIVATE";
-	public static String STATIC_PUBLIC = "STATIC_PUBLIC";
-	
-	private void testPrivate() {
-		// 
-	}
-	
-	public void testPublic() {
-		// 
-	}
-	
-	public static void main2(String[] args) throws UnsupportedEncodingException {
-		System.out.println("I'am main2");
-	}
 
-	private static void main3(String[] args) throws UnsupportedEncodingException {
-		System.out.println("I'am main3");
-	}
-	
-	/**
-	 * jdk 1.6下 以下全部为 false
-	 */
-	public static void main(String[] args) {
-		// true
-		String s1 = new StringBuffer("go").append("od").toString();
-		System.out.print("good ");
-		System.out.println(s1.intern() == s1);
-		// false -- java 加载时已放到字符串常量池
-		String s2 = new StringBuffer("ja").append("va").toString();
-		System.out.print("java ");
-		System.out.println(s2.intern() == s2);
-		// false -- main 加载时已放到字符串常量池
-		String s3 = new StringBuffer("ma").append("in").toString();
-		System.out.print("main ");
-		System.out.println(s3.intern() == s3);
-		// false -- main2 加载时已放到字符串常量池
-		String s31 = new StringBuffer("ma").append("in2").toString();
-		System.out.print("main2 ");
-		System.out.println(s31.intern() == s31);
-		// true -- main3 私有静态方法名不会放到字符串常量池
-		String s32 = new StringBuffer("ma").append("in3").toString();
-		System.out.print("main3 ");
-		System.out.println(s32.intern() == s32);
-		
-		// false
-		String s4 = new StringBuffer("STATIC").append("_PUBLIC").toString();
-		System.out.print("STATIC_PUBLIC ");
-		System.out.println(s4.intern() == s4);
-		// false
-		String s41 = new StringBuffer("STATIC").append("_PRIVATE").toString();
-		System.out.print("STATIC_PRIVATE ");
-		System.out.println(s41.intern() == s41);	
-		
-		/**
-		 * jdk 1.7 false 类的全限定名会初始化到字符串常量池
-		 * jdk 1.8 true 类的全限定名不会初始化到字符串常量池
-		 */
-		String s5 = new StringBuffer("com.sherlocky.string.").append("StringInternTest").toString();
-		System.out.print("com.sherlocky.string.StringInternTest ");
-		System.out.println(s5.intern() == s5);
-		// false 类会初始化到字符串常量池
-		String s51 = new StringBuffer("StringInternTest").toString();
-		System.out.print("StringInternTest ");
-		System.out.println(s51.intern() == s51);
-		
-		// true 私有方法名不会初始化到字符串常量池
-		String s6 = new StringBuffer("test").append("Private").toString();
-		System.out.print("testPrivate ");
-		System.out.println(s6.intern() == s6);
-		// false 公有方法名会初始化到字符串常量池
-		String s7 = new StringBuffer("test").append("Public").toString();
-		System.out.print("testPublic ");
-		System.out.println(s7.intern() == s7);
 
-	}
+    
+    // 以下四个方法必须单独测试，一起测试会有影响
+    public static void main(String[] args) {
+        intern1();
+//        intern2();
+//        intern3();
+//        intern4();
+    }
+    
+    // jdk1.7+
+    public static void intern1() {
+        // 在常量池生成 "fuck" 和 "you"，并在对中生成s1指向的对象，内容为 "fuckyou"
+        String s1 = new String("fuck") + new String("you");
+        // s1.intern 发现常量池不存在 fuckyou，因此直接指向了s1，"fuckyou" 在常量池中创建时也就指向了s1
+        System.out.println(s1.intern() == s1); // true
+        System.out.println("fuckyou" == s1); // true
+    }
+    
+    // jdk1.7+
+    public static void intern2() {
+        String s1 = new String("fuck") + new String("you");
+        // 
+        String s2 = "fuckyou";
+        System.out.println(s1.intern() == s1); // false
+        System.out.println(s1 == s2); // false
+        System.out.println(s1.intern() == s2); // true
+    }
+    
+    // jdk1.7+
+    public static void intern3() {
+        String s1 = new String("fuck") + new String("you");
+        // 先 intern
+        System.out.println(s1.intern() == s1); // true
+        String s2 = "fuckyou";
+        System.out.println(s1 == s2); // true
+        System.out.println(s1.intern() == s2); // true
+    }
+    
+    // jdk1.7+
+    public static void intern4() {
+        String s2 = "fuckyou";
+        String s1 = new String("fuck") + new String("you");
+        System.out.println(s1.intern() == s1); // false
+        System.out.println(s1 == s2); // false
+        System.out.println(s1.intern() == s2); // true
+    }
 }
