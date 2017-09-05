@@ -25,10 +25,11 @@ public class StringInternTest {
     
     // 以下四个方法必须单独测试，一起测试会有影响
     public static void main(String[] args) {
-        intern1();
+//        intern1();
 //        intern2();
 //        intern3();
 //        intern4();
+        intern5();
     }
     
     // jdk1.7+
@@ -68,4 +69,45 @@ public class StringInternTest {
         System.out.println(s1 == s2); // false
         System.out.println(s1.intern() == s2); // true
     }
+    
+    // jdk1.7+
+    public static void intern5() {
+        String s = new String("1");  
+        s.intern();  
+        String s2 = "1";  
+        System.out.println(s == s2); // false
+          
+        String s3 = new String("1") + new String("1");  
+        s3.intern();  
+        String s4 = "11";  
+        String s41 = new String("11");
+        System.out.println(s3 == s4);  // true
+        System.out.println("************");
+        System.out.println(s41.intern() == s4);  // true
+        System.out.println(s41 == s4);  // false
+        System.out.println("************");
+        
+        String s7 = new String("fuck") + new String("you");  
+        s7.intern();  
+        String s8 = "fuckyou";  
+        System.out.println(s7 == s8);  // true
+
+        // java 关键字
+        String s5 = new String("ja") + new String("va");  
+        s5.intern();  
+        String s6 = "java";  
+        System.out.println(s5 == s6);   // false        
+        
+        // intern5 静态方法名
+        String s9 = new String("intern") + new String("5");  
+        s9.intern();  
+        String s10 = "intern5";  
+        System.out.println(s9 == s10);  // false
+
+        // main 方法名
+        String s11 = new String("ma") + new String("in");  
+        s11.intern();  
+        String s12 = "main";  
+        System.out.println(s11 == s12);  // false
+    }    
 }
