@@ -1,0 +1,6 @@
+rootProject.name = 'interview'
+include 'javase'
+include 'multi-thread-test'
+include 'understanding-the-jvm'
+include 'algorithm'
+
