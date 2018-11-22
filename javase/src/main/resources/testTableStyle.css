@@ -1,0 +1,55 @@
+.yl-form {
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
+  background-color: #fff;
+}
+.yl-form caption {
+  font-size: 18px;
+  padding: 10px;
+}
+.yl-form td {
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  position: relative;
+  line-height: 1.5em;
+}
+.yl-form tbody tr:first-child td {
+  border-top: 1px solid #eee;
+}
+.yl-form tr td:first-child {
+  border-left: 1px solid #eee;
+}
+.yl-form2 tbody tr:first-child td:first-child {
+  height: 400px;
+}
+.yl-form td input,
+.yl-form td textarea {
+  position: absolute;
+  width: 99%;
+  height: 98%;
+  left: 0;
+  top: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  padding: 5px;
+  font-size: 1em;
+  resize: none;
+  color: #666;
+  background-color: #fff;
+}
+.yl-form-textbox div {
+  position: relative;
+  text-align: left;
+}
+.yl-form-textbox div:first-child {
+  border-bottom: none;
+}
+.yl-form-textbox div:nth-child(2) {
+  min-height: 400px;
+}
+.yl-empty-form tr td {
+  height: 800px;
+}
