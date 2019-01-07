@@ -1,9 +1,6 @@
 package com.sherlocky.interview.javase.singleton.test;
 
-import com.sherlocky.interview.javase.singleton.EnumSingletonClazz;
-import com.sherlocky.interview.javase.singleton.InnerClassSingleton;
-import com.sherlocky.interview.javase.singleton.LazySingleton;
-import com.sherlocky.interview.javase.singleton.StaticCodeBlockSingleton;
+import com.sherlocky.interview.javase.singleton.*;
 
 /**
  * @author zhangcx
@@ -29,6 +26,8 @@ class TestThread extends Thread {
         System.out.println("Singleton: " + LazySingleton.getInstance().hashCode()
                 + "   InnerClassSingleton: " + InnerClassSingleton.getInstance().hashCode()
                 + "   StaticCodeBlockSingleton: " + StaticCodeBlockSingleton.getInstance().hashCode()
-                + "   EnumSingleton: " + EnumSingletonClazz.getInstance().hashCode());
+                + "   EnumSingleton: " + EnumSingletonClazz.getInstance().hashCode()
+                + "   CASSingleton: " + CASSingleton.getInstance().hashCode()
+        );
     }
 }
