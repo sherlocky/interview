@@ -18,6 +18,10 @@ public class LazySingleton {
      * 直接原因也就是 初始化一个对象并使一个引用指向他这个过程不是原子的。
      * 导致了可能会出现引用指向了对象并未初始化好的那块堆内存，
      * 此时，使用 volatile 修饰对象引用，防止重排序即可解决(JDK1.5+才支持)。
+     *
+     * 此处禁止指令重排，把instance声明为volatile之后，对它的写操作就会有一个内存屏障，这样，在它的赋值完成之前，就不用会调用读操作。
+     * 注意：volatile阻止的不是 instance = new LazySingleton() 这句话内部[1-2-3]的指令重排，
+     * 而是保证了在一个写操作（[1-2-3]）完成之前，不会调用读操作 if (instance == null)。
      */
     private static volatile LazySingleton instance;
     // 对于除了 ``long`` 和 ``double`` 的基本类型，双重检查模式仍然是适用的
