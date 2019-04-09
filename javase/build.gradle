@@ -1,4 +1,11 @@
+//compileJava {
+//    options.compilerArgs += ["-Xlint:deprecation", "-Xlint:unchecked"]
+//}
+
 dependencies {
+    // 代码里使用了 sun 私有包中 @NotNull注解，会报`com.sun.istack.internal`不存在
+    compile 'org.checkerframework:checker:2.1.12'
+
     implementation('com.google.guava:guava:27.0-jre')
     implementation('com.alibaba:fastjson:1.2.28')
     implementation('commons-io:commons-io:2.6')
