@@ -9,6 +9,11 @@ import java.net.SocketException;
 import java.util.Enumeration;
 
 /**
+ * <p>百度实现并开源的雪花算法版本：https://github.com/baidu/uid-generator</p>
+ * <p>基于百度修改的雪花算法SpringBoot版本：https://gitee.com/sherlocky/springboot2-idgenerator</p>
+ */
+
+/**
  * 原始雪花算法简单描述： 
     + 最高位是符号位，始终为0，不可用。 
     + 41位的时间序列，精确到毫秒级，41位的长度可以使用69年。时间位还有一个很重要的作用是可以根据时间进行排序。 
