@@ -1,6 +1,6 @@
-package com.sherlocky.interview.multithread.condition.extthread;
+package com.sherlocky.interview.multithread.lock.extthread;
 
-import com.sherlocky.interview.multithread.condition.service.MyService;
+import com.sherlocky.interview.multithread.lock.service.MyService;
 
 public class MyThreadA extends Thread {
 

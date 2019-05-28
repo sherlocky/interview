@@ -1,8 +1,8 @@
-package com.sherlocky.interview.multithread.condition.test;
+package com.sherlocky.interview.multithread.lock.test;
 
-import com.sherlocky.interview.multithread.condition.extthread.MyThreadA;
-import com.sherlocky.interview.multithread.condition.extthread.MyThreadB;
-import com.sherlocky.interview.multithread.condition.service.MyService;
+import com.sherlocky.interview.multithread.lock.extthread.MyThreadA;
+import com.sherlocky.interview.multithread.lock.extthread.MyThreadB;
+import com.sherlocky.interview.multithread.lock.service.MyService;
 
 public class Run {
 

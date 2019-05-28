@@ -77,12 +77,17 @@ class SynchronizedBlocked implements Runnable{
 
     public static void main(String[] args) throws InterruptedException {
         SynchronizedBlocked sync = new SynchronizedBlocked();
+        System.out.println("1");
         Thread t = new Thread(sync);
+        System.out.println("2");
         //启动后调用f()方法,无法获取当前实例锁处于等待状态
         t.start();
+        System.out.println("3");
         TimeUnit.SECONDS.sleep(1);
+        System.out.println("4");
         //中断线程,无法生效
         t.interrupt();
+        System.out.println("5");
     }
 
     /**
