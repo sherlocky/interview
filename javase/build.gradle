@@ -10,6 +10,8 @@ dependencies {
     implementation('com.alibaba:fastjson:1.2.28')
     implementation('commons-io:commons-io:2.6')
     implementation('org.jsoup:jsoup:1.11.3')
+    // lombok
+    implementation('org.projectlombok:lombok:1.18.8')
     /** poi **/
     implementation('org.apache.poi:poi-scratchpad:3.14')
     // office 2007+ support
