@@ -35,6 +35,7 @@ public class BinarySearchSample {
         while (start <= end) {
             // 查找范围中位数
             int mid = (start + end) >>> 1; // 无符号右移一位（除以2）
+            // mid = start + (end - start) / 2
             int midVal = datas[mid];
             if (midVal == target) {
                 return mid;
@@ -97,6 +98,8 @@ public class BinarySearchSample {
      * <p>旋转后的数组不再满足整体有序的特性了，因此不能直接的套用二分查找算法，但是旋转之后的数组是分段有序的。</p>
      * <p>可以分别在两段数组上进行二分查找操作，因此在每次循环中需要判断哪一段是递增的。</p>
      * 例如： [4, 5, 6, 7, 0, 1, 2]
+     *
+     * <p><a href="https://mp.weixin.qq.com/s?__biz=MzIxMjE5MTE1Nw==&mid=2653198327&idx=1&sn=74187f72a03db8fcad3c234d61c7bad7&chksm=8c99e52dbbee6c3b1e35ea8b2a8d57fa9fa72c098fa91e9f76a3228596922ef062fbf6f3e103&scene=0&xtrack=1&key=98ed5c14c3ff9f33c103b226b378c86ce179a8d7bc9ee077ca59e8e1460a827dc755298c3931aa789ba56fce37e18a6dbb79bea2c45a7d9cc3333775589db02201a0e54aa3186a01dccfd4aa8922e45c&ascene=1&uin=NDc3NjExMDE1&devicetype=Windows+7&version=62060739&lang=zh_CN&pass_ticket=Yg8hweHVbfhxPXs8uifwgFbff7pVaEu%2BW4iR9Nwbn%2BGFhhPdUiqrkK26q4bNkJ%2FZ">漫画：“旋转数组”中的二分查找</a></p>
      *
      * @param rotatedDatas
      * @param target
