@@ -93,6 +93,9 @@ public class DoubleToLongBits {
         BigDecimal numXX = numX.add(numX);
         System.out.println("numX = " + numXX + "// 期望得到 6.00000000000000006");
 
+        /**
+         * {@link BigDecimalDemo#main(String[])} )}
+         */
         System.out.println("--------使用 new BigDecimal(\"xxxx\") 字符传入参，【推荐使用！！！】");
 
         BigDecimal num1111 = new BigDecimal("3.00000000000000003");

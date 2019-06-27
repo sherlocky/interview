@@ -10,6 +10,21 @@ import java.math.RoundingMode;
  */
 public class BigDecimalDemo {
     public static void main(String[] args) {
+        /**
+         * 为了防止精度损失，禁止使用构造方法 BigDecimal(double)的方式把 double 值转化为 BigDecimal 对象。
+         * 说明：BigDecimal(double)存在精度损失风险，在精确计算或值比较的场景中可能会导致业务逻辑异常。
+         */
+        BigDecimal g = new BigDecimal(0.1f); // 实际的存储值为：0.100000001490116119384765625
+        System.out.println(g);
+        /**
+         * 正例：优先推荐入参为 String 的构造方法，或使用 BigDecimal 的 valueOf 方法，
+         * 此方法内部其实执行了 Double 的 toString，而 Double 的 toString 按 double 的实际能表达的精度对尾数进行了截断。
+         */
+        BigDecimal recommend1 = new BigDecimal("0.1");
+        BigDecimal recommend2 = BigDecimal.valueOf(0.1);
+        System.out.println(recommend1);
+        System.out.println(recommend2);
+
         BigDecimal total = new BigDecimal(0);
         BigDecimal total2 = BigDecimal.ZERO;
         System.out.println(total == total2); // false
