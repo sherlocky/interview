@@ -1,7 +1,10 @@
 package com.sherlocky.interview.javase.collections;
 
+import com.google.common.collect.Lists;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 在 Ali 的 Java 开发手册中明确要求谨慎使用 ArrayList 中的 subList() 方法
@@ -76,8 +79,25 @@ public class SubListSample {
         sourceList.add("ZZZ");
         System.out.println("sourceList.add(\"ZZZ\") 后，访问 subList 会抛出异常。。：");
         System.out.println("sourceList ：" + sourceList);
-        System.out.println("subList ：" + subList);
+        // System.out.println("subList ：" + subList);
         System.out.println("---------------------------");
-    }
 
+        /**
+         * 如果需要对subList作出修改，又不想动原list。那么可以创建subList的一个拷贝：
+         */
+        // 此处本应使用JDK提供的Lists(JDK9+), 本工程使用JDK8编译，故使用google common 包下的 Lists。
+        List newSubList= Lists.newArrayList(sourceList.subList(2, 5));
+        // 或者 使用 stream(), 注意这里 limit() 代表步长，和 subList 的 toIndex 不同
+        List newSubList2 = sourceList.stream().skip(2).limit(3).collect(Collectors.toList());
+        System.out.println("sourceList ：" + sourceList);
+        System.out.println("newSubList ：" + newSubList);
+        System.out.println("newSubList2 ：" + newSubList2);
+        newSubList.add("000");
+        newSubList2.add("000");
+        sourceList.add("China");
+        System.out.println("sourceList.add(\"China\")、newSubList.add(\"000\") ，互不影响：");
+        System.out.println("sourceList ：" + sourceList);
+        System.out.println("newSubList ：" + newSubList);
+        System.out.println("newSubList2 ：" + newSubList2);
+    }
 }
