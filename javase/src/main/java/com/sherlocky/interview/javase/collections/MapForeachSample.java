@@ -48,5 +48,8 @@ public class MapForeachSample {
         data.forEach((k, v) -> {
             System.out.println(k + " : " + v);
         });
+
+        // 【参考】 HashMap 在容量不够进行 resize 时由于高并发可能出现死链，导致 CPU 飙升，
+        // 在开发过程中可以使用其它数据结构或加锁来规避此风险。
     }
 }
