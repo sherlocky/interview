@@ -1,8 +1,6 @@
 package com.sherlocky.interview.multithread.executor;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * JAVA线程池详细理解可参考：https://www.cnblogs.com/dolphin0520/p/3932921.html
@@ -22,6 +20,14 @@ import java.util.concurrent.TimeUnit;
  * 使用的SynchronousQueue，也就是说来了任务就创建线程运行，当线程空闲超过60秒，就销毁线程）</li>
  * <li>Executors.newSingleThreadExecutor();   //创建容量为1的缓冲池（corePoolSize和maximumPoolSize都设置为1，使用的LinkedBlockingQueue）</li>
  * <li>Executors.newFixedThreadPool(int);    //创建固定容量大小的缓冲池（corePoolSize和maximumPoolSize值是相等的，使用的LinkedBlockingQueue）</li>
+ * </ul>
+ *
+ * <p>而Ali Java开发手册中强制要求线程池不允许使用 Executors 去创建，而是要通过 ThreadPoolExecutor 的方式。</p>
+ * <p>这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。</p>
+ * <p>Executors 返回的线程池对象的弊端如下：</p>
+ * <ul>
+ *     <li>1） FixedThreadPool 和 SingleThreadPool：允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM。</li>
+ *     <li>2） CachedThreadPool：允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM。
  * </ul>
  *
  * <p><strong>任务缓存队列及排队策略</strong></p>
