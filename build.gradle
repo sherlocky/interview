@@ -4,6 +4,9 @@ buildscript {
         maven {
             url maven_url
         }
+        maven {
+            url gradle_plugin_maven_url
+        }
     }
 }
 
@@ -28,6 +31,9 @@ subprojects {
     repositories {
         maven {
             url maven_url
+        }
+        maven {
+            url maven2_url
         }
     }
 
