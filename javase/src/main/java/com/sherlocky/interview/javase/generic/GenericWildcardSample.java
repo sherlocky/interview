@@ -8,8 +8,8 @@ import java.util.List;
  *
  * <strong>PECS(Producer Extends Consumer Super)原则：</strong>
  * <ul>
- * <li>第1.频繁往外读取内容的[生产者（Producer）]，适合用<? extends T>。</li>
- * <li>第2.经常往里插入内同的[消费者（Consumer）]，适合用<? super T>。</li>
+ * <li>第1.频繁往外读取内容的[生产者（Producer）]，只读，适合用<? extends T>。</li>
+ * <li>第2.经常往里插入内同的[消费者（Consumer）]，只写，适合用<? super T>。</li>
  * <li>第3.如果一个泛型集合即要生产，又要消费，则不能使用泛型通配符声明集合。</li>
  * </ul>
  * <ul>
@@ -41,6 +41,18 @@ public class GenericWildcardSample {
         List<? extends Number> foo3 = new ArrayList<Double>();
 
         /**
+         *  <? extends Fruit> 表示Fruit是这个传入的泛型的基类（Fruit是泛型的上界）。
+         *  这个集合内的元素都是 Fruit 的子类型，但是到底是哪个子类型不知道，
+         *  所以添加哪个子类型，编译器都认为是危险的，所以直接禁止添加！
+         */
+        List<? extends Fruit> fruitList = new ArrayList<>();
+        // 都编译报错
+        // fruitList.add(new Fruit());
+        // fruitList.add(new Apple());
+
+
+
+        /**
          * <? super T> 表示包括T在内的任何T的父类。
          *
          * - 1.写入操作一定可以往列表中插入 Integer 类型元素，因为Integer、Number、Object都支持Integer。
@@ -67,5 +79,30 @@ public class GenericWildcardSample {
         generics = notGenerics;
         // 此处抛出 java.lang.ClassCastException 异常
         String string = generics.get(0);
+
+        /**
+         *  <? super Apple> 表示这个集合内元素的下界是Apple,
+         * 所以向集合中添加 Apple 以及 Apple 的子类型是安全的，不会破坏这个承诺语义。
+         * 但是添加 Fruit 就会报错。
+         */
+        List<? super Apple> superAppleList = new ArrayList<>();
+        // ok
+        superAppleList.add(new Apple());
+        // 编译报错
+        // superAppleList.add(new Fruit());
+    }
+
+
+    /**
+     * 自定义一个水果父类
+     */
+    private static class Fruit {
+
+    }
+    /**
+     * 定义一个苹果类继承自水果父类
+     */
+    private static class Apple extends Fruit {
+
     }
 }
