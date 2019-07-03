@@ -22,7 +22,7 @@ import java.util.List;
  * @author: zhangcx
  * @date: 2019/6/28 11:24
  */
-public class GenericSample {
+public class GenericWildcardSample {
     public static void main(String[] args) {
         /**
          * <? extends Number> 表示包括T在内的任何T的子类。
