@@ -17,6 +17,8 @@ import java.util.Random;
  *
  * <p>如果不是安全场景的随机数，使用Random就好</p>
  *
+ * <a href="https://juejin.im/post/5d1d5e60f265da1b67212b20">jdk竟然有4个random</a>
+ *
  * @author: zhangcx
  * @date: 2019/5/24 10:38
  */
