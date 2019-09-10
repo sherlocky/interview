@@ -1,4 +1,4 @@
-package com.sherlocky.interview.javase.interview.algorithm._8Queen;
+package com.sherlocky.interview.javase.interview.algorithm._8queen;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -23,7 +23,7 @@ import java.util.Scanner;
  * @author: zhangcx
  * @date: 2019/1/11 9:19
  */
-public class nQueenWithTracingRecursive {
+public class NQueenWithTracingRecursive {
     private static int SIZE = 0;//皇后的个数
     private static int count = 0;//记录摆放的组合数
 
