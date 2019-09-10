@@ -1,4 +1,4 @@
-package com.sherlocky.interview.javase.interview.algorithm.fifo;
+package com.sherlocky.interview.algorithm.fifo;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

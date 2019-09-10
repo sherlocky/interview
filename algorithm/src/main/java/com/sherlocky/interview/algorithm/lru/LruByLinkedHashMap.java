@@ -1,4 +1,4 @@
-package com.sherlocky.interview.javase.interview.algorithm.lru;
+package com.sherlocky.interview.algorithm.lru;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

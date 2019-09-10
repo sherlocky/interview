@@ -1,4 +1,4 @@
-package com.sherlocky.interview.javase.interview.algorithm.bloomfilter;
+package com.sherlocky.interview.algorithm.bloomfilter;
 
 import com.google.common.hash.Funnels;
 import com.google.common.hash.Hashing;

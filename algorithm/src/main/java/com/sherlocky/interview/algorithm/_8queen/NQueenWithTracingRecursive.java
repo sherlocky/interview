@@ -1,4 +1,4 @@
-package com.sherlocky.interview.javase.interview.algorithm._8queen;
+package com.sherlocky.interview.algorithm._8queen;
 
 import java.util.LinkedList;
 import java.util.Scanner;

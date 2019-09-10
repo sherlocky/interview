@@ -1,4 +1,4 @@
-package com.sherlocky.interview.javase.interview.algorithm.search;
+package com.sherlocky.interview.algorithm.search;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.ArrayUtils;

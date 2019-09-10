@@ -1,4 +1,4 @@
-package com.sherlocky.interview.javase.interview.algorithm.snowflake;
+package com.sherlocky.interview.algorithm.snowflake;
 
 import org.apache.commons.lang3.StringUtils;
 
