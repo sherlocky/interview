@@ -35,7 +35,7 @@ public class KetamaConsistentHashNodeLocator extends AbstractConsistentHashNodeL
     protected TreeMap<Long, MemcachedNode> buildConsistentHashRing(List<MemcachedNode> servers) {
         TreeMap<Long, MemcachedNode> virtualNodeRing = new TreeMap<>();
         for (MemcachedNode server : servers) {
-            for (int i = 0; i < VIRTUAL_NODE_SIZE / 4; i++) {
+            for (int i = 0; i < virtualNodeSize / 4; i++) {
                 byte[] digest = KeyUtil.computeMd5(server.getSocketAddress().toString() + VIRTUAL_NODE_SUFFIX + i);
                 for (int h = 0; h < 4; h++) {
                     Long k = ((long) (digest[3 + h * 4] & 0xFF) << 24)

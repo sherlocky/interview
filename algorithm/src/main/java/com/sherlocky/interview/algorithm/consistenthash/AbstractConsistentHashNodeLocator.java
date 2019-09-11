@@ -51,7 +51,7 @@ public abstract class AbstractConsistentHashNodeLocator implements HashNodeLocat
      */
     protected AbstractConsistentHashNodeLocator(List<MemcachedNode> memcachedNodes, HashAlgorithm hashAlg, int virtualNodeSize) {
         this.hashAlgorithm = hashAlg;
-        // 先复制哈希算法，再构建哈希环
+        // 先赋值哈希算法，再构建哈希环
         this.hashRing = buildConsistentHashRing(memcachedNodes);
         this.virtualNodeSize = virtualNodeSize;
     }

@@ -29,7 +29,7 @@ public class CommonConsistentHashNodeLocator extends AbstractConsistentHashNodeL
     protected TreeMap<Long, MemcachedNode> buildConsistentHashRing(List<MemcachedNode> nodes) {
         TreeMap<Long, MemcachedNode> virtualNodeRing = new TreeMap<>();
         for (MemcachedNode node : nodes) {
-            for (int i = 0; i < VIRTUAL_NODE_SIZE; i++) {
+            for (int i = 0; i < virtualNodeSize; i++) {
                 // 新增虚拟节点的方式如果有影响，也可以抽象出一个由物理节点扩展虚拟节点的类
                 virtualNodeRing.put(hashAlgorithm.hash(node.getSocketAddress().toString() + VIRTUAL_NODE_SUFFIX + i), node);
             }
