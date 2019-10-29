@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * LRU是Least Recently Used的缩写，即最近最久未使用
+ * LRU是Least Recently Used的缩写，即最近最少使用
  * <p>【LRU缓存的思想】</p>
  * <ul>
  * <li>固定缓存大小，需要给缓存分配一个固定的大小。</li>

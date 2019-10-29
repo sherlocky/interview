@@ -3,8 +3,20 @@ package com.sherlocky.interview.algorithm.lru;
 import java.util.HashMap;
 
 /**
- * 使用cache和双向链表实现缓存
+ * 使用散列表和双向链表实现缓存
+ * <p>
+ *     LRU 是 Least Recently Used 的缩写，这种算法认为最近使用的数据是热门数据，下一次很大概率将会再次被使用。
+ *     而最近很少被使用的数据，很大概率下一次不再用到。当缓存容量满的时候，优先淘汰最近很少使用的数据。
+ * </p>
  * <p>可参考：<a href="https://mp.weixin.qq.com/s?__biz=MzU3NzczMTAzMg==&mid=2247485912&idx=1&sn=0b560c36109b5b6ea69ac08938ac68ca">散列表+双向链表实现LRU</a></p>
+ * <p>
+ *     具体步骤：
+ *     <ul>
+ *         <li>1.新数据直接插入到列表头部</li>
+ *         <li>2.缓存数据被命中，将数据移动到列表头部</li>
+ *         <li>3.缓存已满的时候，移除列表尾部数据</li>
+ *     </ul>
+ * </p>
  * @author
  */
 public class LruByHashMap<K, V> {
@@ -19,9 +31,15 @@ public class LruByHashMap<K, V> {
         cache = new HashMap<>();
     }
 
+    /**
+     * 将节点加入到头结点，如果容量已满，将会删除尾结点
+     * @param key
+     * @param value
+     */
     public void put(K key, V value) {
         Entry<K, V> entry = getEntry(key);
         if (entry == null) {
+            // 如果缓存列表已满，则移除列表尾部数据
             if (cache.size() >= MAX_CACHE_SIZE) {
                 cache.remove(tail.key);
                 removeTail();
@@ -29,19 +47,28 @@ public class LruByHashMap<K, V> {
             entry = new Entry<>();
             entry.key = key;
             entry.value = value;
+            // 加入节点，并移动到头部（加入头结点）
             moveToHead(entry);
             cache.put(key, entry);
         } else {
+            // 移动到头部
             entry.value = value;
             moveToHead(entry);
         }
     }
 
+    /**
+     * 如果节点不存在，返回 null；
+     * 如果存在，将节点移动到头结点，并返回节点的数据
+     * @param key
+     * @return
+     */
     public V get(K key) {
         Entry<K, V> entry = getEntry(key);
         if (entry == null) {
             return null;
         }
+        // 存在移动节点
         moveToHead(entry);
         return entry.value;
     }
