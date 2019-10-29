@@ -3,7 +3,9 @@ package com.sherlocky.interview.algorithm.lru;
 import java.util.HashMap;
 
 /**
- * 使用cache和链表实现缓存
+ * 使用cache和双向链表实现缓存
+ * <p>可参考：<a href="https://mp.weixin.qq.com/s?__biz=MzU3NzczMTAzMg==&mid=2247485912&idx=1&sn=0b560c36109b5b6ea69ac08938ac68ca">散列表+双向链表实现LRU</a></p>
+ * @author
  */
 public class LruByHashMap<K, V> {
     private final int MAX_CACHE_SIZE;
