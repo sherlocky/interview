@@ -22,6 +22,8 @@ import java.util.Arrays;
  * <p>平均时间复杂度：O（nlogn），极端情况下退化成：O（n^2）</p>
  *
  * <p>可参考：<a href="https://mp.weixin.qq.com/s?__biz=MzIxMjE5MTE1Nw==&mid=2653195042&idx=1&sn=2b0915cd2298be9f2163cc90a3d464da"/>漫画：什么是快速排序？（完整版）</p>
+ *
+ * 其他排序算法：<a href="https://mp.weixin.qq.com/s/vn3KiV-ez79FmbZ36SX9lg">十大经典排序算法动画与解析，看我就够了！（配代码完全版）</a>
  * @author: zhangcx
  * @date: 2019/10/8 9:40
  */
