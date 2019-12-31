@@ -8,6 +8,9 @@ import java.util.concurrent.*;
  * <p>FutureTask 就是一个实现 Future 模式，支持取消的异步处理器。</p>
  * 可参考<a href="https://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651482143&idx=1&sn=483f860f37018218ef86b6895181a5a8&chksm=bd2504608a528d76f379242b3adc1af441d06aa2f77853c5ff5b81cc488ef8e2c0ca1524e470&mpshare=1&scene=1&srcid=#rd">FutureTask 在线程池中应用和源码解析</a>；<a href="www.jianshu.com/p/1fac6476e85f">FutureTask 在线程池中应用和源码解析</a>；<a href="https://blog.csdn.net/sx1119183530/article/details/79735348">多线程中Future与FutureTask的区别和联系</a>
  *
+ * <p> FutureTask类实现了RunnableFuture接口，而RunnableFuture继承了Runnable接口和Future接口
+ *     FutureTask是Future接口的一个唯一实现类。
+ * </p>
  * @author zhangcx
  * @date 2018-11-26
  */
