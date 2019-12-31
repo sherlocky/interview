@@ -11,6 +11,7 @@ import java.util.Enumeration;
 /**
  * <p>百度实现并开源的雪花算法版本：https://github.com/baidu/uid-generator</p>
  * <p>基于百度修改的雪花算法SpringBoot版本：https://gitee.com/sherlocky/springboot2-idgenerator</p>
+ * <p>leaf 美团分布式ID生成服务：https://github.com/Meituan-Dianping/Leaf</p>
  */
 
 /**
