@@ -6,6 +6,10 @@ import java.util.Objects;
 
 /**
  * 最长公共子串：子串要求在原字符串中是连续的
+ * <p>
+ *     还有一个类似的问题：什么是字符串匹配算法？
+ *     可参考：https://mp.weixin.qq.com/s?__biz=MzIxMjE5MTE1Nw==&mid=2653201142&idx=1&sn=8cac1bbcfdb94474f0cc3855705cc253
+ * </p>
  * @author: zhangcx
  * @date: 2019/11/13 10:54
  * @since:
