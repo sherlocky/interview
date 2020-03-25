@@ -138,6 +138,10 @@ public class BloomFilterByRedis {
      */
     private long hash(String key) {
         Charset charset = Charset.forName("UTF-8");
+        /**
+         * MurmurHash 是一种非加密型哈希函数，适用于一般的哈希检索操作。
+         * Redis，Memcached，Cassandra，HBase，Lucene等都使用了它
+         */
         // 根据 murmur3_128 方法的到一个 128 位长度的 byte[]
         return Hashing.murmur3_128().hashObject(key, Funnels.stringFunnel(charset)).asLong();
     }
