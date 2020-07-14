@@ -9,7 +9,7 @@ import java.util.List;
  * JDk7 下使用 Collections.sort 手动实现的 Comparator
  * 如果不满足 自反性、传递性、对称性时，会报错 Comparison method violates its general contract
  * <p>
- * JDK7+ 默认使用了 TimSort，不支持不严谨的 compare 逻辑了，可参考：
+ * JDK7+ 默认使用了 TimSort，不支持不严谨的 compare 逻辑了，可参考： {@link Arrays#sort(Object[], Comparator)}
  * <p>解决办法：
  * <ul>
  * <li>
