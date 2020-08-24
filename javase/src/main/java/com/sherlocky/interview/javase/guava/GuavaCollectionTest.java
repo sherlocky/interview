@@ -49,6 +49,19 @@ public class GuavaCollectionTest {
         Map<String, Map<String, String>> map = Maps.newHashMap();
         Map<String, Person> personMap = Maps.newHashMap();
         
+        /**
+         * 指定map容量
+         *
+         * 如果我们直接使用new HashMap(7)设置的默认值是 7，经过 JDK 处理之后，
+         * HashMap 的容量会被设置成 8，但是，这个 HashMap 在元素个数达到 8*0.75 = 6 的时候就会进行一次扩容，
+         * 这明显是我们不希望见到的。
+         *
+         * guava 提供了一个比较合理的方法，比如我们计划向 HashMap 中放入 7 个元素的时候，
+         * 我们通过 expectedSize / 0.75F + 1.0F 计算，7/0.75 + 1 = 10 ,10 经过 JDK 处理之后，会被设置成 16，
+         * 这就大大的减少了扩容的几率。
+         */
+        Map<String, Person> newPersonMap = Maps.newHashMapWithExpectedSize(7);
+
         List<List<Map<String, String>>> list = Lists.newArrayList();
         List<Person> personList= Lists.newLinkedList();
 
