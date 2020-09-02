@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * <ul>
  *  <li>对父、子List做的非结构性修改（non-structural changes），都会影响到彼此。</li>
  *  <li>对子List做结构性修改，操作同样会反映到父List上。</li>
- *  <li>对父List做结构性修改，会导致子列表抛出异常ConcurrentModificationException。</li>
+ *  <li>对父List做结构性修改，会导致子列表的访问（遍历、增加、删除）抛出异常ConcurrentModificationException。</li>
  * </ul>
  *
  * @author: zhangcx
